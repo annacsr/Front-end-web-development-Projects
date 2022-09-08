@@ -8,6 +8,22 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     stats: 'verbose',
+    output: {
+        libraryTarget: 'var',
+        library: 'Client',
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'main.js'
+    },
+    /*devServer: {
+        historyApiFallback: {
+            // previously disableDotRule: true,
+            disableDotRule: false,
+           },
+        proxy: {
+            '/': 'http://localhost:8080',
+            '/addText': 'http://localhost:8080/addText'
+        }
+    },*/
     module: {
         rules: [
             {
@@ -16,7 +32,7 @@ module.exports = {
                 loader: "babel-loader"
             },
             {
-                test: /.scss$/,
+                test: /\.scss$/,
                 use: ['style-loader', 'css-loader', 'sass-loader']
             }
         ]
